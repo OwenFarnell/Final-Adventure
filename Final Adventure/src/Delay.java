@@ -6,7 +6,7 @@ public class Delay
 			{
 				try
 					{
-						Thread.sleep(750);
+						Thread.sleep(250);
 					} catch (InterruptedException e)
 					{
 						e.printStackTrace();
@@ -16,7 +16,7 @@ public class Delay
 			{
 				try
 					{
-						Thread.sleep(2000);
+						Thread.sleep(750);
 					} catch (InterruptedException e)
 					{
 						e.printStackTrace();
@@ -26,7 +26,7 @@ public class Delay
 			{
 				try
 					{
-						Thread.sleep(5000);
+						Thread.sleep(2000);
 					} catch (InterruptedException e)
 					{
 						e.printStackTrace();
