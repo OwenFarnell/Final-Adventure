@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Main
 	{
+
 		static String name;
 		
 		public static void main(String [] args)
@@ -26,4 +27,5 @@ public class Main
 		
 		
 		
+
 	}
