@@ -21,6 +21,7 @@ public class Main
 				name = userStringInput.nextLine();
 				System.out.println("Hey " + name + ". Welcome.");
 				Delay.delay1();
+				System.out.println("hi");
 			}
 		
 		
