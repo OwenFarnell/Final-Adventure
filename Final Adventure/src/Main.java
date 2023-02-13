@@ -1,6 +1,10 @@
 import java.util.Scanner;
+
+import sun.jvm.hotspot.gc.parallel.PSYoungGen;
+
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.MulticastSocket;
 
 public class Main
 	{
@@ -20,6 +24,7 @@ public class Main
 			intro();
 			createMonstersAndHero();
 			stats();
+			mainMenu();
 			
 		}
 		
@@ -83,6 +88,13 @@ public class Main
 					monsters[i] = new Monster(Name, c, l, h, d);
 
 				}
+		}
+		public static void mainMenu()
+		{
+			System.out.println("What would you like to fight?\n(1) Slime\n(2) Goblin\n(3) Troll\n(4) Dragon\n(5) Demon Lord\n\n");
+			System.out.println("(6) Shop        (7)Stats");
+			System.out.println("       (8)End Game");
+			
 		}
 		
 		
