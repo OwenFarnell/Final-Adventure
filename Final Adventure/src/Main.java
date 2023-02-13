@@ -49,7 +49,7 @@ public class Main
 				Delay.delay1();
 				System.out.println("-------------------");
 				Delay.delay1();
-				System.out.println("Level: " + player1.getLevel());
+				System.out.println("Level: " + player1.getLevel() + "    $"+player1.getGold());
 				Delay.delay1();
 				System.out.println("Amount of EXP: " + player1.getXp() + "/" + player1.getXpToNextLvl());
 				Delay.delay1();
@@ -70,7 +70,7 @@ public class Main
 		
 		public static void createMonstersAndHero()
 		{
-			player1 = new Player(name, 20, 5, 5, 1, 10,0);
+			player1 = new Player(name, 20, 5, 5, 1, 10,0,0);
 			fillMonsters(file);
 		}
 		
@@ -85,7 +85,8 @@ public class Main
 					int l = b.nextInt();
 					int h = b.nextInt();
 					int d = b.nextInt();
-					monsters[i] = new Monster(Name, c, l, h, d);
+					int g = b.nextInt();
+					monsters[i] = new Monster(Name, c, l, h, d,g);
 
 				}
 		}
