@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class Main
 	{
@@ -9,11 +11,16 @@ public class Main
 		static int playerStrength;
 		static int playerDexterity;
 		static double playerXP;
-		
-		public static void main(String [] args)
+		static Player player1;
+		static Scanner file;
+		static Monster[] monsters = new Monster[5];
+		public static void main(String [] args) throws FileNotFoundException
 		{
+			file = new Scanner(new File("monsters.txt"));
 			intro();
+			createMonstersAndHero();
 			stats();
+			
 		}
 		
 		@SuppressWarnings({ "resource", "unused" })
@@ -37,15 +44,15 @@ public class Main
 				Delay.delay1();
 				System.out.println("-------------------");
 				Delay.delay1();
-				System.out.println("Level: " + playerLevel);
+				System.out.println("Level: " + player1.getLevel());
 				Delay.delay1();
-				System.out.println("Amount of EXP: " + playerXP);
+				System.out.println("Amount of EXP: " + player1.getXp() + "/" + player1.getXpToNextLvl());
 				Delay.delay1();
-				System.out.println("Health: " + playerHealth);
+				System.out.println("Health: " + player1.getHealth());
 				Delay.delay1();
-				System.out.println("Strength: " + playerStrength);
+				System.out.println("Strength: " + player1.getStrength());
 				Delay.delay1();
-				System.out.println("Dexterity: " + playerDexterity);
+				System.out.println("Dexterity: " + player1.getDexterity());
 				Delay.delay1();
 				System.out.println("-------------------");
 				System.out.println(" ");
@@ -56,6 +63,27 @@ public class Main
 				System.out.println("test");
 			}
 		
+		public static void createMonstersAndHero()
+		{
+			player1 = new Player(name, 20, 5, 5, 1, 10,0);
+			fillMonsters(file);
+		}
+		
+		public static void fillMonsters(Scanner b)
+		{
+			int numberOfLines = b.nextInt();
+
+			for (int i = 0; i < numberOfLines; i++)
+				{
+					String Name = b.next();
+					int c = b.nextInt();
+					int l = b.nextInt();
+					int h = b.nextInt();
+					int d = b.nextInt();
+					monsters[i] = new Monster(Name, c, l, h, d);
+
+				}
+		}
 		
 		
 
