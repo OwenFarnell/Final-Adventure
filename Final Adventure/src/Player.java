@@ -3,12 +3,12 @@ public class Player
 	{
 		
 			private String name;
-			private int level,health,strength,dexterity,xpToNextLvl,xp,gold;
+			private int level,health,strength,dexterity,xpToNextLvl,xp,gold,maxHP;
 			
 			public Player()
 			{}
 			
-			public Player(String t , int n, int o, int c, int l,int h,int p,int g)
+			public Player(String t , int n, int o, int c, int l,int h,int p,int g,int k)
 			{
 				name = t;
 				health =n;
@@ -18,6 +18,7 @@ public class Player
 				xpToNextLvl = h;
 				xp = p;
 				gold = g;
+				maxHP = k;
 			}
 			
 			public int getHealth()
@@ -82,6 +83,15 @@ public class Player
 			public void setGold(int gold)
 				{
 					this.gold = gold;
+				}
+			public int getMaxHealth()
+				{
+					return maxHP;
+				}
+
+			public void setMaxHealth(int maxHP)
+				{
+					this.maxHP = maxHP;
 				}
 			
 	}
