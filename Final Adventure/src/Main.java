@@ -119,7 +119,6 @@ public class Main
 					{
 						displayHealth(enemyNumber);
 					playerTurn(enemyNumber);
-					//checkForStillPlaying();
 						enemyTurn(enemyNumber);
 //						checkForAlive();
 					}
@@ -162,7 +161,7 @@ public class Main
 				}
 			if(menuChoice == 3)
 				{
-					System.out.println("You RUN AWAY from the " + monsters[enemyNumber].getType() + " Looser");
+					System.out.println("You RUN AWAY from the " + monsters[enemyNumber].getType() + "...looser");
 					Delay.delay1();
 					boolean ranAway = true;
 				}
