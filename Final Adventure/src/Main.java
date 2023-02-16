@@ -225,6 +225,11 @@ public class Main
 				{
 					kill();
 				}
+			else
+			{
+				System.out.println("That is not an option.");
+				mainMenu();
+			}
 		}
 		
 		public static void kill()
@@ -290,6 +295,7 @@ public class Main
 					Delay.delay1();
 					boolean ranAway = true;
 				}
+			
 		}
 		
 		public static void enemyTurn(int enemyNumber)
