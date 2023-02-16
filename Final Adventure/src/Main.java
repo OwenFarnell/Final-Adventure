@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.net.MulticastSocket;
+
 
 public class Main
 	{
@@ -16,7 +16,8 @@ public class Main
 		static Player player1;
 		static Scanner file;
 		static boolean stillAlive = true;
-		static boolean ranAway = false;
+		static boolean ranAway = true;
+		static boolean gaming = true;
 		static int monsterHealth;
 		static Monster[] monsters = new Monster[5];
 		public static void main(String [] args) throws FileNotFoundException
@@ -24,8 +25,10 @@ public class Main
 			file = new Scanner(new File("monsters.txt"));
 			intro();
 			createMonstersAndHero();
+			while(gaming) {
 			stats();
 			mainMenu();
+			}
 			
 		}
 		
@@ -243,14 +246,17 @@ public class Main
 				System.out.println("");
 				System.out.println("");
 				System.out.println("You encounter a lvl "+monsters[enemyNumber].getLevel()+" "+monsters[enemyNumber].getType()+"!\n");
+				stillAlive = true;
+				ranAway = true;
 				playerHealth = player1.getMaxHealth();
 				monsterHealth = monsters[enemyNumber].getHealth();
-				while(stillAlive)
+				while(stillAlive && ranAway)
 					{
 						displayHealth(enemyNumber);
 					playerTurn(enemyNumber);
+					checkForAlive(enemyNumber);
 						enemyTurn(enemyNumber);
-//						checkForAlive();
+						checkForAlive(enemyNumber);
 					}
 			}
 		
@@ -293,14 +299,14 @@ public class Main
 				{
 					System.out.println("You RUN AWAY from the " + monsters[enemyNumber].getType() + "...looser");
 					Delay.delay1();
-					boolean ranAway = true;
+					ranAway = false;
 				}
 			
 		}
 		
 		public static void enemyTurn(int enemyNumber)
 		{
-			if(ranAway = false)
+			if(ranAway && stillAlive)
 				{
 					int turnBased = (int)(Math.random()*10);
 					if(turnBased >2)
@@ -326,4 +332,50 @@ public class Main
 			
 							
 		}
+		
+		public static void checkForAlive(int enemyNumber)
+		{
+			if(stillAlive && ranAway)
+				{
+			if(monsterHealth <= 0)
+				{
+					monsterDeath(enemyNumber);
+				}
+			if(playerHealth <= 0)
+				{
+				playerDeath(enemyNumber);
+				}
+				}
+		}
+			public static void monsterDeath(int enemyNumber)
+				{
+					System.out.println("Congratulations, you have killed the "+ monsters[enemyNumber].getType() + "!");
+					player1.setXp(player1.getXp() + monsters[enemyNumber].getXpGiven());
+					player1.setGold(player1.getGold() + monsters[enemyNumber].getGoldGiven());
+					System.out.println("You gained " + monsters[enemyNumber].getXpGiven() + " XP!");
+					System.out.println("You gained " + monsters[enemyNumber].getGoldGiven() + "g");
+					if(player1.getXp()>=player1.getXpToNextLvl())
+						{
+							System.out.println("Congrats, you leveled up!");
+							player1.setXp(player1.getXp()%player1.getXpToNextLvl());
+							player1.setXpToNextLvl(player1.getXpToNextLvl()+5);
+							player1.setHealth(player1.getHealth()+5);
+							player1.setStrength(player1.getStrength()+5);
+							player1.setDexterity(player1.getDexterity()+5);
+							player1.setLevel(player1.getLevel()+1);
+							
+						}
+					stillAlive = false;
+				}
+			public static void playerDeath(int enemyNumber)
+				{
+					System.out.println("The "+ monsters[enemyNumber].getType() + "gets you very weak so you run away");
+					
+					player1.setGold(player1.getGold()-5);
+					
+					System.out.println("You lost 5g");
+				
+					stillAlive = false;
+				}
+		
 	}
