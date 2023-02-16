@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+import sun.jvm.hotspot.tools.SysPropsDumper;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -51,7 +52,7 @@ public class Main
 				Delay.delay1();
 				System.out.println("-------------------");
 				Delay.delay1();
-				System.out.println("Level: " + player1.getLevel() + "    $"+player1.getGold());
+				System.out.println("Level: " + player1.getLevel() + "  "+player1.getGold() + "g");
 				Delay.delay1();
 				System.out.println("Amount of EXP: " + player1.getXp() + "/" + player1.getXpToNextLvl());
 				Delay.delay1();
@@ -65,9 +66,118 @@ public class Main
 				System.out.println(" ");
 			}
 		
-		public static void start()
+//		public static void start()
+//			{
+//				System.out.println("test");
+//			}
+		
+		public static void shop()
 			{
-				System.out.println("test");
+				System.out.println("Welcome to the Blacksmith! \nWhat would you like to buy?\n");
+				Delay.delay2();
+				System.out.println("Swords: \n-(1) Good Sword - 10g\n-(2) Great Sword - 25g\n-(3) God Sword - 50g");
+				Delay.delay2();
+				System.out.println("Armor: \n-(4) Chest Plate - 15g \n-(5) Greater Chest Plate - 30g \n-(6) God Chest Plate - 45g");
+				Delay.delay2();
+				System.out.println("\n(7) Return to Menu");
+				
+				Scanner userInput = new Scanner(System.in);
+				int choice = userInput.nextInt();
+				
+				if (choice == 1)
+					{
+						if(player1.getGold()>= 10)
+							{
+								System.out.println("You've bought the Good Sword!");
+								player1.setGold(player1.getGold() - 10);
+								player1.setStrength(player1.getGold() + 5);
+							}
+						else
+							{
+								System.out.println("You don't have enough to purchase that.\n");
+								shop();
+							}
+					}
+				if (choice == 2)
+					{
+						if(player1.getGold()>= 25)
+							{
+								System.out.println("You've bought the Great Sword!");
+								player1.setGold(player1.getGold() - 25);
+								player1.setStrength(player1.getGold() + 15);
+							}
+						else
+							{
+								System.out.println("You don't have enough to purchase that.\n");
+								shop();
+							}
+					}
+				if (choice == 3)
+					{
+						if(player1.getGold()>= 50)
+							{
+								System.out.println("You've bought the God Sword!");
+								player1.setGold(player1.getGold() - 50);
+								player1.setStrength(player1.getGold() + 50);
+							}
+						else
+							{
+								System.out.println("You don't have enough to purchase that.\n");
+								shop();
+							}
+					}
+				if (choice == 4)
+					{
+						if(player1.getGold()>= 15)
+							{
+								System.out.println("You've bought the Chest Plate!");
+								player1.setGold(player1.getGold() - 15);
+								player1.setHealth(player1.getGold() + 10);
+							}
+						else
+							{
+								System.out.println("You don't have enough to purchase that.\n");
+								shop();
+							}
+					}
+				if (choice == 5)
+					{
+						if(player1.getGold()>= 30)
+							{
+								System.out.println("You've bought the Greater Chest Plate!");
+								player1.setGold(player1.getGold() - 30);
+								player1.setHealth(player1.getGold() + 30);
+							}
+						else
+							{
+								System.out.println("You don't have enough to purchase that. \n");
+								shop();
+							}
+					}
+				if (choice == 6)
+					{
+						if(player1.getGold()>= 45)
+							{
+								System.out.println("You've bought the God Chest Plate!");
+								player1.setGold(player1.getGold() - 45);
+								player1.setHealth(player1.getGold() + 50);
+							}
+						else
+							{
+								System.out.println("You don't have enough to purchase that. \n");
+								shop();
+							}
+					}
+				if (choice == 7)
+					{
+						mainMenu();
+					}
+				else
+					{
+						System.out.println("Thats not an option.");
+						Delay.delay2();
+						shop();
+					}
 			}
 		
 		public static void createMonstersAndHero()
@@ -96,7 +206,7 @@ public class Main
 		public static void mainMenu()
 		{
 			System.out.println("What would you like to fight?\n   (1) Slime\n   (2) Goblin\n   (3) Troll\n   (4) Dragon\n   (5) Demon Lord\n\n");
-			System.out.println("   (6) Shop        (7)Stats");
+			System.out.println("   (6) Blacksmith        (7)Stats");
 			System.out.println("         (8)End Game");
 			Scanner userInput = new Scanner(System.in);
 			int input = userInput.nextInt();
@@ -105,6 +215,23 @@ public class Main
 				{
 					enemyFight(input);
 				}
+			if(input == 6)
+				{
+					shop();
+				}
+			if(input == 7)
+				{
+					stats();
+				}
+			if(input == 8)
+				{
+					kill();
+				}
+		}
+		
+		public static void kill()
+		{
+			System.exit(0);
 		}
 		
 		public static void enemyFight(int input)
