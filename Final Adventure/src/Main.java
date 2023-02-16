@@ -18,6 +18,13 @@ public class Main
 		static boolean stillAlive = true;
 		static boolean ranAway = true;
 		static boolean gaming = true;
+		static boolean hasItem1 = true;
+		static boolean hasItem2 = true;
+		static boolean hasItem3 = true;
+		static boolean hasItem4 = true;
+		static boolean hasItem5 = true;
+		static boolean hasItem6 = true;
+		
 		static int monsterHealth;
 		static Monster[] monsters = new Monster[5];
 		public static void main(String [] args) throws FileNotFoundException
@@ -87,97 +94,139 @@ public class Main
 				
 				if (choice == 1)
 					{
+						if(hasItem1)
+							{
 						if(player1.getGold()>= 10)
 							{
 								System.out.println("You've bought the Good Sword!");
+								
 								player1.setGold(player1.getGold() - 10);
-								player1.setStrength(player1.getGold() + 5);
+								player1.setStrength(player1.getStrength() + 5);
+								hasItem1 = false;
 							}
 						else
 							{
 								System.out.println("You don't have enough to purchase that.\n");
 								shop();
+							}
+							}
+						else
+							{
+								System.out.println("You already have this item!");
 							}
 					}
 				if (choice == 2)
 					{
+						if(hasItem2)
+							{
 						if(player1.getGold()>= 25)
 							{
 								System.out.println("You've bought the Great Sword!");
 								player1.setGold(player1.getGold() - 25);
-								player1.setStrength(player1.getGold() + 15);
+								player1.setStrength(player1.getStrength() + 15);
+								hasItem2 = false;
 							}
 						else
 							{
 								System.out.println("You don't have enough to purchase that.\n");
 								shop();
+							}
+							}
+						else
+							{
+								System.out.println("You already have this item!");
 							}
 					}
 				if (choice == 3)
 					{
+						if(hasItem3)
+							{
 						if(player1.getGold()>= 50)
 							{
 								System.out.println("You've bought the God Sword!");
 								player1.setGold(player1.getGold() - 50);
-								player1.setStrength(player1.getGold() + 50);
+								player1.setStrength(player1.getStrength() + 50);
+								hasItem3=false;
 							}
 						else
 							{
 								System.out.println("You don't have enough to purchase that.\n");
 								shop();
+							}
+							}
+						else
+							{
+								System.out.println("You already have this item!");
 							}
 					}
 				if (choice == 4)
 					{
+						if(hasItem4)
+							{
 						if(player1.getGold()>= 15)
 							{
 								System.out.println("You've bought the Chest Plate!");
 								player1.setGold(player1.getGold() - 15);
-								player1.setHealth(player1.getGold() + 10);
+								player1.setHealth(player1.getHealth() + 10);
+								hasItem4=false;
 							}
 						else
 							{
 								System.out.println("You don't have enough to purchase that.\n");
 								shop();
 							}
+							}
+						else
+							{
+								System.out.println("You already have this item!");
+							}
 					}
 				if (choice == 5)
 					{
+						if(hasItem5)
+							{
 						if(player1.getGold()>= 30)
 							{
 								System.out.println("You've bought the Greater Chest Plate!");
 								player1.setGold(player1.getGold() - 30);
-								player1.setHealth(player1.getGold() + 30);
+								player1.setHealth(player1.getHealth() + 30);
+								hasItem5=false;
 							}
 						else
 							{
 								System.out.println("You don't have enough to purchase that. \n");
 								shop();
 							}
+							}
+						else
+								{
+									System.out.println("You already have this item!");
+								}
 					}
 				if (choice == 6)
 					{
+						if(hasItem6) {
 						if(player1.getGold()>= 45)
 							{
 								System.out.println("You've bought the God Chest Plate!");
 								player1.setGold(player1.getGold() - 45);
-								player1.setHealth(player1.getGold() + 50);
+								player1.setHealth(player1.getHealth() + 50);
+								hasItem6=false;
 							}
 						else
 							{
 								System.out.println("You don't have enough to purchase that. \n");
 								shop();
+							}
+						}
+						else
+							{
+								System.out.println("You already have this item!");
 							}
 					}
 				if (choice == 7)
 					{
 						mainMenu();
-					}
-				else
-					{
-						System.out.println("Thats not an option.");
-						Delay.delay2();
-						shop();
 					}
 			}
 		
@@ -359,7 +408,7 @@ public class Main
 							System.out.println("Congrats, you leveled up!");
 							player1.setXp(player1.getXp()%player1.getXpToNextLvl());
 							player1.setXpToNextLvl(player1.getXpToNextLvl()+5);
-							player1.setHealth(player1.getHealth()+5);
+							player1.setMaxHealth(player1.getMaxHealth()+5);
 							player1.setStrength(player1.getStrength()+5);
 							player1.setDexterity(player1.getDexterity()+5);
 							player1.setLevel(player1.getLevel()+1);
