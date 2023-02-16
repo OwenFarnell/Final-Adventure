@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-import sun.jvm.hotspot.tools.SysPropsDumper;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.MulticastSocket;
