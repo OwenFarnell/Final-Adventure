@@ -228,12 +228,6 @@ public class Main
 					{
 						mainMenu();
 					}
-				else
-					{
-						System.out.println("Thats not an option.");
-						Delay.delay2();
-						shop();
-					}
 			}
 		
 		public static void createMonstersAndHero()
