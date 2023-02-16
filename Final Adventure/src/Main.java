@@ -228,11 +228,6 @@ public class Main
 				{
 					kill();
 				}
-			else
-			{
-				System.out.println("That is not an option.");
-				mainMenu();
-			}
 		}
 		
 		public static void kill()
@@ -270,13 +265,16 @@ public class Main
 		{
 			
 			System.out.println("What would you like to do?");
+			Delay.delay1();
 			System.out.println("  (1)Fight    (2)Heal");
+			Delay.delay1();
 			System.out.println("         (3)RUN");
 			Scanner userInput = new Scanner(System.in);
 			int menuChoice = userInput.nextInt();
 			
 			if(menuChoice == 1)
 				{
+				Delay.delay1();
 					System.out.println("You go in for the ATTACK and LAND a blow!");
 					Delay.delay1();
 					 int damage =(int)(Math.random()*player1.getStrength())+3;
@@ -287,6 +285,7 @@ public class Main
 				}
 			if(menuChoice == 2)
 				{
+				Delay.delay1();
 					System.out.println("You decide to HEAL");
 					Delay.delay1();
 					playerHealth = playerHealth+(playerHealth/5);
@@ -297,6 +296,7 @@ public class Main
 				}
 			if(menuChoice == 3)
 				{
+				Delay.delay1();
 					System.out.println("You RUN AWAY from the " + monsters[enemyNumber].getType() + "...looser");
 					Delay.delay1();
 					ranAway = false;
