@@ -64,7 +64,7 @@ public class Main
 				Delay.delay1();
 				System.out.println("Amount of EXP: " + player1.getXp() + "/" + player1.getXpToNextLvl());
 				Delay.delay1();
-				System.out.println("Health: " + player1.getHealth());
+				System.out.println("Health: " + player1.getMaxHealth());
 				Delay.delay1();
 				System.out.println("Strength: " + player1.getStrength());
 				Delay.delay1();
@@ -167,7 +167,7 @@ public class Main
 							{
 								System.out.println("You've bought the Chest Plate!");
 								player1.setGold(player1.getGold() - 15);
-								player1.setHealth(player1.getHealth() + 10);
+								player1.setMaxHealth(player1.getMaxHealth() + 10);
 								hasItem4=false;
 							}
 						else
@@ -189,7 +189,7 @@ public class Main
 							{
 								System.out.println("You've bought the Greater Chest Plate!");
 								player1.setGold(player1.getGold() - 30);
-								player1.setHealth(player1.getHealth() + 30);
+								player1.setMaxHealth(player1.getMaxHealth() + 30);
 								hasItem5=false;
 							}
 						else
@@ -210,7 +210,7 @@ public class Main
 							{
 								System.out.println("You've bought the God Chest Plate!");
 								player1.setGold(player1.getGold() - 45);
-								player1.setHealth(player1.getHealth() + 50);
+								player1.setMaxHealth(player1.getMaxHealth() + 50);
 								hasItem6=false;
 							}
 						else
@@ -403,16 +403,20 @@ public class Main
 					player1.setGold(player1.getGold() + monsters[enemyNumber].getGoldGiven());
 					System.out.println("You gained " + monsters[enemyNumber].getXpGiven() + " XP!");
 					System.out.println("You gained " + monsters[enemyNumber].getGoldGiven() + "g");
+					
 					if(player1.getXp()>=player1.getXpToNextLvl())
 						{
+							int h = player1.getXp()%player1.getXpToNextLvl();
+							for(int i = player1.getXp(); i >= player1.getXpToNextLvl() ; i=i- player1.getXpToNextLvl())
+								{
 							System.out.println("Congrats, you leveled up!");
-							player1.setXp(player1.getXp()%player1.getXpToNextLvl());
 							player1.setXpToNextLvl(player1.getXpToNextLvl()+5);
 							player1.setMaxHealth(player1.getMaxHealth()+5);
 							player1.setStrength(player1.getStrength()+5);
 							player1.setDexterity(player1.getDexterity()+5);
 							player1.setLevel(player1.getLevel()+1);
-							
+								}
+							player1.setXp(h);
 						}
 					stillAlive = false;
 				}
